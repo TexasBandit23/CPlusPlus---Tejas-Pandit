@@ -9,6 +9,7 @@ int main()
   bool stillPlaying = true;
   char playAgain;
   bool play = true;
+  int numGuesses = 0;
   
   srand (time(NULL));
   secretNum = (rand() % 100) + 1;
@@ -18,9 +19,11 @@ int main()
     cin >> input;
 
     if(input == secretNum){
+      numGuesses = numGuesses + 1;
       play = true;
       cout << "Good Job!" << endl;
-	cout << "Play Again? Please enter y or n." << endl; 
+      cout << "It took you " << numGuesses << " guesses!" << endl;
+      cout << "Play Again? Please enter y or n." << endl; 
       while(play == true){
 	cin >> playAgain;
 	if(playAgain == 'n'){
@@ -41,9 +44,11 @@ int main()
       }
     }
     else if(input < secretNum){
+      numGuesses = numGuesses + 1;
       cout << "Too Low!" << endl;
     }
     else{
+      numGuesses = numGuesses + 1;
       cout << "Too High!" << endl;
     }
   }
